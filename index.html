@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chivers Roofing Ltd: Tommy Chivers, roofer in Berkshire, Surrey, Hampshire &amp; London</title>
+<meta name="description" content="I'm Tommy Chivers, a roofer with 11 years on the tools: slate, tile, flat roofs, lead work and repairs across Berkshire, Surrey, Hampshire and London. Fully insured, NVQ Level 2, free quotes." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 5 3 17h4v10h18V17h4z' fill='%23EC1F27'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          white: "#FFFFFF",
+          paper: "#F7F6F3",
+          line: "#E6E3DD",
+          charcoal: "#333333",
+          ink: "#1B1B1D",
+          red: "#EC1F27",
+          "red-cta": "#C8151C",
+          "red-deep": "#A5111A",
+        },
+        fontFamily: { sans: ['Montserrat', 'Arial', 'Helvetica', 'sans-serif'] },
+        maxWidth: { wrap: "1120px" },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  body { font-family: 'Montserrat', Arial, Helvetica, sans-serif; color: #333333; background: #FFFFFF; -webkit-font-smoothing: antialiased; }
+
+  h1, h2, h3 { letter-spacing: -0.02em; }
+  .prose p { line-height: 1.72; }
+  .prose p + p { margin-top: 1.1rem; }
+  .eyebrow { letter-spacing: 0.08em; }
+
+  a { text-decoration: none; }
+  .lnk { color: #C8151C; text-underline-offset: 3px; transition: color .15s ease; }
+  .lnk:hover { color: #A5111A; text-decoration: underline; }
+  :focus-visible { outline: 2px solid #C8151C; outline-offset: 3px; border-radius: 2px; }
+
+  /* ---- Buttons: filled -> outline on hover, matching the brief's reference interaction ---- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    font-weight: 700; font-size: 0.95rem; border-radius: 6px; border: 2px solid transparent;
+    padding: 0.8rem 1.5rem;
+    transition: background-color .18s cubic-bezier(.2,.8,.2,1), color .18s cubic-bezier(.2,.8,.2,1), border-color .18s cubic-bezier(.2,.8,.2,1), transform .12s ease;
+  }
+  .btn:active { transform: translateY(1px) scale(.99); }
+  .btn-primary { background: #EC1F27; border-color: #EC1F27; color: #fff; }
+  .btn-primary:hover { background: rgba(236,31,39,.08); border-color: #EC1F27; color: #C8151C; }
+  .btn-primary--hero:hover { background: rgba(255,255,255,.1); border-color: #fff; color: #fff; }
+  .btn-outline { background: transparent; border-color: rgba(51,51,51,.28); color: #333; }
+  .btn-outline:hover { border-color: #333; background: #F7F6F3; }
+  .btn-outline--hero { border-color: rgba(255,255,255,.5); color: #fff; }
+  .btn-outline--hero:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+
+  .field {
+    width: 100%; min-width: 0; max-width: 100%; background: #fff;
+    border: 1px solid #DAD6CE; border-radius: 6px; padding: 0.72rem 0.85rem;
+    font: inherit; color: #333; transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .field:focus { outline: none; border-color: #EC1F27; box-shadow: 0 0 0 3px rgba(236,31,39,.12); }
+  select.field {
+    -webkit-appearance: none; appearance: none; padding-right: 2.1rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%23333' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 0.85rem center;
+  }
+  label { display: block; font-weight: 600; font-size: 0.82rem; margin-bottom: 0.35rem; }
+
+  /* ---- Hero ---- */
+  .hero {
+    position: relative; isolation: isolate; overflow: hidden;
+    min-height: 640px;
+  }
+  @media (min-width: 768px) {
+    .hero { min-height: calc(100svh - 80px); }
+  }
+  .hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 42%; z-index: -3; }
+  .hero__scrim {
+    position: absolute; inset: 0; z-index: -2;
+    background:
+      radial-gradient(120% 85% at 82% 0%, rgba(236,31,39,.20), rgba(236,31,39,0) 55%),
+      linear-gradient(190deg, rgba(15,15,17,.55) 0%, rgba(15,15,17,.72) 42%, rgba(15,15,17,.94) 100%);
+  }
+  .hero__grain { position: absolute; inset: 0; z-index: -1; opacity: .18; mix-blend-mode: overlay; }
+
+  .hero-enter { animation: heroRise .8s cubic-bezier(.16,1,.3,1) both; }
+  .hero-enter--1 { animation-delay: .05s; }
+  .hero-enter--2 { animation-delay: .16s; }
+  .hero-enter--3 { animation-delay: .27s; }
+  .hero-enter--4 { animation-delay: .38s; }
+  @keyframes heroRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---- Services: editorial row list ---- */
+  .svc-row {
+    padding-left: 1.35rem; margin-left: -1.35rem; padding-right: .5rem;
+    transition: background-color .2s ease;
+  }
+  .svc-row:hover { background: #FAF9F7; }
+  .svc-row__bar {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #EC1F27;
+    transform: scaleY(0); transform-origin: center; transition: transform .28s cubic-bezier(.2,.8,.2,1);
+  }
+  .svc-row:hover .svc-row__bar { transform: scaleY(1); }
+
+  /* ---- Promise strip icons ---- */
+  .svc-icon {
+    width: 2.6rem; height: 2.6rem; border-radius: 8px; flex: none;
+    background: rgba(51,51,51,.06); color: #333;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .job-figure { position: relative; overflow: hidden; border-radius: 10px; }
+  .job-figure img { transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .job-figure:hover img { transform: scale(1.045); }
+  .job-figure__scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(0deg, rgba(15,15,17,.82) 0%, rgba(15,15,17,.15) 45%, rgba(15,15,17,0) 65%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero-enter { animation: none; opacity: 1; transform: none; }
+    .job-figure img { transition: none; }
+  }
+</style>
+</head>
+
+<body class="bg-white">
+
+<a href="#services" class="sr-only focus:not-sr-only focus:absolute focus:z-[70] focus:top-3 focus:left-3 focus:bg-white focus:text-charcoal focus:px-4 focus:py-2 focus:border focus:border-charcoal focus:font-semibold">Skip to content</a>
+
+<!-- ================= HEADER ================= -->
+<header class="sticky top-0 z-50 bg-ink">
+  <div class="mx-auto max-w-wrap px-5 md:px-8">
+    <div class="flex items-center justify-between h-[72px] md:h-[80px]">
+      <a href="#top" class="flex items-center" aria-label="Chivers Roofing Ltd, home">
+        <img src="assets/logo-reversed.png" alt="Chivers Roofing Ltd" class="h-9 w-auto md:h-10" />
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-[0.92rem] font-semibold" aria-label="Primary">
+        <a href="#services" class="text-white/80 hover:text-white transition-colors">What I do</a>
+        <a href="#work" class="text-white/80 hover:text-white transition-colors">Recent jobs</a>
+        <a href="#about" class="text-white/80 hover:text-white transition-colors">About me</a>
+        <a href="tel:+447760663711" class="text-white/80 hover:text-white transition-colors">07760&nbsp;663711</a>
+        <a href="#contact" class="btn btn-primary !py-2 !px-3.5 !text-[0.86rem]">Ask for a quote</a>
+      </nav>
+
+      <button id="menuBtn" class="md:hidden inline-flex items-center gap-2 -mr-2 p-2 font-bold text-[0.9rem] text-white" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span class="flex flex-col gap-[5px]">
+          <span class="block w-6 h-[2px] bg-white"></span>
+          <span class="block w-6 h-[2px] bg-white"></span>
+          <span class="block w-6 h-[2px] bg-white"></span>
+        </span>
+        Menu
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileNav" class="md:hidden hidden border-t border-white/10 bg-ink">
+    <nav class="mx-auto max-w-wrap px-5 py-3 flex flex-col text-[1rem] font-semibold text-white/90" aria-label="Mobile">
+      <a href="#services" class="py-2.5">What I do</a>
+      <a href="#work" class="py-2.5">Recent jobs</a>
+      <a href="#about" class="py-2.5">About me</a>
+      <a href="#contact" class="py-2.5">Get in touch</a>
+      <a href="tel:+447760663711" class="py-2.5 text-red">Call 07760&nbsp;663711</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero flex items-end">
+    <img src="assets/roof-clay-aerial.jpg" alt="" class="hero__img" />
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <svg class="hero__grain" aria-hidden="true" width="100%" height="100%">
+      <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0"/></filter>
+      <rect width="100%" height="100%" filter="url(#grain)" />
+    </svg>
+
+    <div class="mx-auto max-w-wrap w-full px-5 md:px-8 pt-40 pb-14 md:pt-48 md:pb-20">
+      <p class="hero-enter hero-enter--1 text-white/75 font-semibold text-[0.95rem] mb-4">
+        Chivers Roofing Ltd &middot; Berkshire, Surrey, Hampshire &amp; London
+      </p>
+      <h1 class="hero-enter hero-enter--2 text-[2.3rem] sm:text-[3rem] md:text-[3.6rem] font-extrabold leading-[1.05] text-white max-w-[18ch]">
+        Roofing done properly: pitched, flat, slate and lead.
+      </h1>
+      <p class="hero-enter hero-enter--3 mt-6 max-w-[38rem] text-[1.08rem] md:text-[1.16rem] leading-[1.6] text-white/85">
+        I'm Tommy Chivers, eleven years on the tools, fully insured, and the same person
+        who quotes your job and turns up to do it.
+      </p>
+      <div class="hero-enter hero-enter--4 mt-8 flex flex-wrap items-center gap-3">
+        <a href="tel:+447760663711" class="btn btn-primary btn-primary--hero">Call 07760&nbsp;663711</a>
+        <a href="#contact" class="btn btn-outline btn-outline--hero">Ask for a quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROMISE STRIP ================= -->
+  <section class="bg-paper border-b border-line">
+    <div class="mx-auto max-w-wrap px-5 md:px-8 py-10 md:py-12">
+      <div class="grid sm:grid-cols-3 gap-8 sm:gap-10">
+        <div class="flex gap-4">
+          <span class="svc-icon !bg-charcoal/[0.06] !text-charcoal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12.5 11 15l4.5-6"/><circle cx="12" cy="12" r="9"/></svg>
+          </span>
+          <div>
+            <p class="font-bold text-charcoal">A straight answer</p>
+            <p class="mt-1 text-[0.92rem] leading-[1.55] text-charcoal/75">About what the roof actually needs. No charge for the visit.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <span class="svc-icon !bg-charcoal/[0.06] !text-charcoal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5H7a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5Z"/><path d="M9.5 12h5M9.5 15.5h5"/></svg>
+          </span>
+          <div>
+            <p class="font-bold text-charcoal">A written quote</p>
+            <p class="mt-1 text-[0.92rem] leading-[1.55] text-charcoal/75">With the materials named on it, so there's nothing vague to argue about later.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <span class="svc-icon !bg-charcoal/[0.06] !text-charcoal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5h16"/><path d="M6 19.5V9l6-4 6 4v10.5"/><path d="M10 19.5v-5h4v5"/></svg>
+          </span>
+          <div>
+            <p class="font-bold text-charcoal">A tidy site</p>
+            <p class="mt-1 text-[0.92rem] leading-[1.55] text-charcoal/75">Kept clear while I'm working, and left clean when the job's done.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHAT I DO ================= -->
+  <section id="services" class="scroll-mt-[84px]">
+    <div class="mx-auto max-w-wrap px-5 md:px-8 py-16 md:py-24">
+      <div class="lg:grid lg:grid-cols-[1fr_20rem] lg:gap-14 lg:items-center">
+        <div>
+          <h2 class="text-[1.8rem] md:text-[2.2rem] font-bold text-charcoal">What I do</h2>
+          <p class="prose mt-4 max-w-[42rem] text-[1.02rem] text-charcoal/85">
+            Most of my work is re-roofs and repairs on houses, extensions and outbuildings. If
+            you're not sure what your roof needs, I'll come and take a look and tell you straight,
+            no charge for that.
+          </p>
+        </div>
+
+        <div class="relative mt-10 lg:mt-0 w-full max-w-[19rem] mx-auto lg:mx-0 lg:max-w-none h-[230px] sm:h-[270px]">
+          <div class="absolute right-0 top-0 w-[64%] h-full bg-red rounded-[12px] translate-x-2 -translate-y-2" aria-hidden="true"></div>
+          <img src="assets/roof-slate-hip-detail.jpg" alt=""
+               class="absolute right-0 top-0 w-[64%] h-full object-cover rounded-[12px] shadow-[0_18px_30px_-16px_rgba(20,20,20,.45)]" />
+          <img src="assets/roof-clay-hip-detail.jpg" alt=""
+               class="absolute left-0 bottom-0 w-[52%] h-[62%] object-cover rounded-[10px] border-4 border-white shadow-[0_16px_26px_-14px_rgba(236,31,39,.4)]" />
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-line">
+        <div class="svc-row group relative grid md:grid-cols-[15rem_1fr] gap-x-10 gap-y-2 py-7 border-b border-line">
+          <span class="svc-row__bar" aria-hidden="true"></span>
+          <div class="flex items-center gap-3.5">
+            <svg class="text-red-cta flex-none" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 12 4l9 8"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M14.5 20v-5.5h-5V20"/></svg>
+            <h3 class="text-[1.15rem] font-bold text-charcoal">Pitched roofing</h3>
+          </div>
+          <p class="text-[0.98rem] leading-[1.65] text-charcoal/78 max-w-[42rem]">New roofs and full re-roofs in slate or tile, with new underlay, treated battens and a dry-fixed ridge. Scaffold sorted, waste taken away.</p>
+        </div>
+
+        <div class="svc-row group relative grid md:grid-cols-[15rem_1fr] gap-x-10 gap-y-2 py-7 border-b border-line">
+          <span class="svc-row__bar" aria-hidden="true"></span>
+          <div class="flex items-center gap-3.5">
+            <svg class="text-red-cta flex-none" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 6.5 3 3-8 8-3.5.5.5-3.5Z"/><path d="m13 8 3 3"/><path d="M4 20h4"/></svg>
+            <h3 class="text-[1.15rem] font-bold text-charcoal">Roof repairs</h3>
+          </div>
+          <p class="text-[0.98rem] leading-[1.65] text-charcoal/78 max-w-[42rem]">Slipped or cracked tiles, failed flashings, ridge repointing and leaks, tracked down and put right rather than patched over.</p>
+        </div>
+
+        <div class="svc-row group relative grid md:grid-cols-[15rem_1fr] gap-x-10 gap-y-2 py-7 border-b border-line">
+          <span class="svc-row__bar" aria-hidden="true"></span>
+          <div class="flex items-center gap-3.5">
+            <svg class="text-red-cta flex-none" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18"/><path d="M5 9v10h14V9"/><path d="M8 9V6h3"/></svg>
+            <h3 class="text-[1.15rem] font-bold text-charcoal">Flat roofs</h3>
+          </div>
+          <p class="text-[0.98rem] leading-[1.65] text-charcoal/78 max-w-[42rem]">New flat roofs in felt or single-ply, laid with proper falls, upstands and trims so the water runs off where it should.</p>
+        </div>
+
+        <div class="svc-row group relative grid md:grid-cols-[15rem_1fr] gap-x-10 gap-y-2 py-7 border-b border-line">
+          <span class="svc-row__bar" aria-hidden="true"></span>
+          <div class="flex items-center gap-3.5">
+            <svg class="text-red-cta flex-none" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11"/><path d="M5 9v10h9V9"/><path d="M8 9V6h3"/><path d="M16.5 12v3m0 3h.01" stroke-width="2"/><circle cx="16.5" cy="15.5" r="4.25"/></svg>
+            <h3 class="text-[1.15rem] font-bold text-charcoal">Flat roof repairs</h3>
+          </div>
+          <p class="text-[0.98rem] leading-[1.65] text-charcoal/78 max-w-[42rem]">Blisters, splits, ponding and tired felt patched or overlaid, or a full recover if the deck has had its day.</p>
+        </div>
+
+        <div class="svc-row group relative grid md:grid-cols-[15rem_1fr] gap-x-10 gap-y-2 py-7 border-b border-line">
+          <span class="svc-row__bar" aria-hidden="true"></span>
+          <div class="flex items-center gap-3.5">
+            <svg class="text-red-cta flex-none" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c3.2 4 5 6.9 5 9.5a5 5 0 0 1-10 0c0-2.6 1.8-5.5 5-9.5Z"/></svg>
+            <h3 class="text-[1.15rem] font-bold text-charcoal">Lead work</h3>
+          </div>
+          <p class="text-[0.98rem] leading-[1.65] text-charcoal/78 max-w-[42rem]">Valleys, soakers, chimney flashings and box gutters in Code 4 and 5 lead, dressed and fixed to last.</p>
+        </div>
+
+        <div class="svc-row group relative grid md:grid-cols-[15rem_1fr] gap-x-10 gap-y-2 py-7 border-b border-line">
+          <span class="svc-row__bar" aria-hidden="true"></span>
+          <div class="flex items-center gap-3.5">
+            <svg class="text-red-cta flex-none" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M6 6v3.5a3 3 0 0 0 6 0V6"/><path d="M12 12v7"/></svg>
+            <h3 class="text-[1.15rem] font-bold text-charcoal">Fascias and soffits</h3>
+          </div>
+          <p class="text-[0.98rem] leading-[1.65] text-charcoal/78 max-w-[42rem]">Replacement fascias, soffits and guttering in uPVC, with straight lines, proper support and neat corners.</p>
+        </div>
+
+        <div class="svc-row group relative grid md:grid-cols-[15rem_1fr] gap-x-10 gap-y-2 py-7 border-b border-line">
+          <span class="svc-row__bar" aria-hidden="true"></span>
+          <div class="flex items-center gap-3.5">
+            <svg class="text-red-cta flex-none" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c-4-1-6-4-6-8 0-3 2-6 6-8 4 2 6 5 6 8 0 4-2 7-6 8Z"/><path d="M12 20v-8"/></svg>
+            <h3 class="text-[1.15rem] font-bold text-charcoal">Moss removal</h3>
+          </div>
+          <p class="text-[0.98rem] leading-[1.65] text-charcoal/78 max-w-[42rem]">Roof, gutters and valleys cleared, and while I'm up there I'll check for anything that's slipped or worked loose and let you know.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RECENT JOBS ================= -->
+  <section id="work" class="bg-paper border-y border-line scroll-mt-[84px]">
+    <div class="mx-auto max-w-wrap px-5 md:px-8 py-16 md:py-24">
+      <h2 class="text-[1.8rem] md:text-[2.2rem] font-bold text-charcoal">Some recent jobs</h2>
+      <p class="prose mt-4 max-w-[42rem] text-[1.02rem] text-charcoal/85">
+        A few roofs I've finished lately. These are straight off my phone, nothing dressed up.
+      </p>
+
+      <div class="mt-10 grid sm:grid-cols-3 gap-5 md:gap-7">
+        <figure class="job-figure">
+          <img src="assets/roof-slate-lead.jpg" alt="A slate roof with dressed lead valleys running down to a red brick wall"
+               loading="lazy" decoding="async" class="w-full h-[240px] md:h-[300px] object-cover" style="object-position: 32% 42%;" />
+          <div class="job-figure__scrim" aria-hidden="true"></div>
+          <figcaption class="absolute left-4 right-4 bottom-3.5 text-[0.88rem] leading-snug text-white/95 font-medium">
+            Slate roof with dressed lead valleys where it meets the chimney and wall.
+          </figcaption>
+        </figure>
+        <figure class="job-figure">
+          <img src="assets/roof-clay-ridge.jpg" alt="A clay tiled hip with a mechanically fixed ridge, seen against a blue sky"
+               loading="lazy" decoding="async" class="w-full h-[240px] md:h-[300px] object-cover" />
+          <div class="job-figure__scrim" aria-hidden="true"></div>
+          <figcaption class="absolute left-4 right-4 bottom-3.5 text-[0.88rem] leading-snug text-white/95 font-medium">
+            Clay tiled hip, ridge mechanically fixed so it stays put in the wind.
+          </figcaption>
+        </figure>
+        <figure class="job-figure">
+          <img src="assets/roof-tile-hip.jpg" alt="An interlocking tile roof with a neat dry-fixed hip, scaffold alongside"
+               loading="lazy" decoding="async" class="w-full h-[240px] md:h-[300px] object-cover" style="object-position: center 22%;" />
+          <div class="job-figure__scrim" aria-hidden="true"></div>
+          <figcaption class="absolute left-4 right-4 bottom-3.5 text-[0.88rem] leading-snug text-white/95 font-medium">
+            Re-roof in interlocking tile, dry-fixed hip and tidy verges.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="scroll-mt-[84px]">
+    <div class="mx-auto max-w-wrap px-5 md:px-8 py-16 md:py-24">
+      <div class="grid lg:grid-cols-[1fr_0.8fr] gap-10 lg:gap-16 items-start">
+        <div>
+          <h2 class="text-[1.8rem] md:text-[2.2rem] font-bold text-charcoal">A bit about me</h2>
+          <div class="prose mt-5 max-w-[40rem] text-[1.04rem] text-charcoal/90">
+            <p>
+              I started out labouring for a roofing firm at nineteen and never really left. I
+              did my NVQ Level 2 in slating and tiling, worked for a few different companies
+              around the South East, and set up Chivers Roofing so I could do the job the way I
+              think it should be done.
+            </p>
+            <p>
+              That means turning up when I say I will, using the right materials, not cutting
+              the corners you can't see, and clearing up properly at the end. I'm fully insured
+              (public and employers' liability), and if something isn't right after I've left,
+              I'll come back and sort it.
+            </p>
+            <p class="font-semibold text-charcoal">Tommy</p>
+          </div>
+
+          <p class="mt-6 text-[0.9rem] leading-[1.6] text-charcoal/65 max-w-[38rem]">
+            NVQ Level 2 Diploma in Slating &amp; Tiling (ProQual, certificate no. 448738).
+            Public liability and employers' liability insurance in place. Written quotes on
+            every job.
+          </p>
+        </div>
+
+        <figure class="job-figure">
+          <img src="assets/roof-slate-valleys.jpg" alt="A natural slate roof I completed, two valleys meeting under a lead ridge"
+               loading="lazy" decoding="async" class="w-full h-[320px] lg:h-[440px] object-cover" style="object-position: center 60%;" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="bg-paper border-y border-line scroll-mt-[84px]">
+    <div class="mx-auto max-w-wrap px-5 md:px-8 py-16 md:py-24">
+      <h2 class="text-[1.8rem] md:text-[2.2rem] font-bold text-charcoal">Get in touch</h2>
+      <p class="prose mt-4 max-w-[42rem] text-[1.02rem] text-charcoal/85">
+        Give me a call, or send a few details and I'll get back to you the same day, or first
+        thing the next.
+      </p>
+
+      <div class="mt-10 grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-start">
+        <form id="quoteForm" novalidate class="bg-white border border-line rounded-[10px] p-6 md:p-7 shadow-[0_1px_2px_rgba(20,20,20,.04),0_16px_32px_-20px_rgba(20,20,20,.16)]">
+          <div class="grid sm:grid-cols-2 gap-4 [&>div]:min-w-0">
+            <div>
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" class="field" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" class="field" autocomplete="tel" required />
+            </div>
+            <div>
+              <label for="postcode">Postcode</label>
+              <input id="postcode" name="postcode" type="text" class="field" autocomplete="postal-code" />
+            </div>
+            <div>
+              <label for="need">What's it about?</label>
+              <select id="need" name="need" class="field">
+                <option>Pitched roofing</option>
+                <option>Roof repair or leak</option>
+                <option>Lead work</option>
+                <option>New flat roof</option>
+                <option>Flat roof repair</option>
+                <option>Fascias and soffits</option>
+                <option>Moss removal</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-4">
+            <label for="message">Tell me a bit more <span class="font-normal text-charcoal/55">(optional)</span></label>
+            <textarea id="message" name="message" rows="4" class="field resize-y"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary mt-5">Send it over</button>
+          <p id="formNote" class="mt-4 text-[0.92rem] font-semibold text-red-cta" hidden>
+            Thanks, I've got that. I'll come back to you today, or first thing tomorrow.
+          </p>
+        </form>
+
+        <dl class="text-[0.98rem]">
+          <div class="flex gap-4 py-3 border-t border-line">
+            <dt class="w-28 flex-none font-semibold text-charcoal/55">Phone</dt>
+            <dd><a href="tel:+447760663711" class="lnk font-semibold">07760 663711</a></dd>
+          </div>
+          <div class="flex gap-4 py-3 border-t border-line">
+            <dt class="w-28 flex-none font-semibold text-charcoal/55">Email</dt>
+            <dd><a href="mailto:Tommy@chiversroofing.co.uk" class="lnk font-semibold break-words">Tommy@chiversroofing.co.uk</a></dd>
+          </div>
+          <div class="flex gap-4 py-3 border-t border-line">
+            <dt class="w-28 flex-none font-semibold text-charcoal/55">Area</dt>
+            <dd class="text-charcoal/90">Berkshire, Surrey, Hampshire and London</dd>
+          </div>
+          <div class="flex gap-4 py-3 border-t border-line">
+            <dt class="w-28 flex-none font-semibold text-charcoal/55">Hours</dt>
+            <dd class="text-charcoal/90">Monday to Friday, 7:30am – 5:30pm</dd>
+          </div>
+          <div class="flex gap-4 py-3 border-t border-b border-line">
+            <dt class="w-28 flex-none font-semibold text-charcoal/55">Follow</dt>
+            <dd class="flex flex-wrap gap-x-6 gap-y-2">
+              <a href="https://www.instagram.com/chivers_roofing_ltd/" target="_blank" rel="noopener"
+                 class="lnk inline-flex items-center gap-2 font-semibold">
+                <svg class="w-[18px] h-[18px] flex-none" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.8c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07Zm0 3.06a4.98 4.98 0 1 1 0 9.96 4.98 4.98 0 0 1 0-9.96Zm0 1.8a3.18 3.18 0 1 0 0 6.36 3.18 3.18 0 0 0 0-6.36Zm6.35-.9a1.16 1.16 0 1 1-2.32 0 1.16 1.16 0 0 1 2.32 0Z"/></svg>
+                Instagram
+              </a>
+              <a href="https://www.tiktok.com/@tommychivers" target="_blank" rel="noopener"
+                 class="lnk inline-flex items-center gap-2 font-semibold">
+                <svg class="w-[18px] h-[18px] flex-none" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 5.6a4.4 4.4 0 0 1-1.08-2.6h-3.3v12.9a2.63 2.63 0 1 1-1.9-2.53V9.98a5.9 5.9 0 1 0 5.2 5.86v-5.6a7.5 7.5 0 0 0 4.38 1.4V8.15a4.4 4.4 0 0 1-3.3-2.55Z"/></svg>
+                TikTok
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-ink text-white/70">
+  <div class="mx-auto max-w-wrap px-5 md:px-8 py-12">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+      <img src="assets/logo-reversed.png" alt="Chivers Roofing Ltd" class="h-9 w-auto" />
+      <div class="flex flex-wrap gap-x-6 gap-y-2 text-[0.9rem] font-semibold">
+        <a href="#services" class="hover:text-white transition-colors">What I do</a>
+        <a href="#work" class="hover:text-white transition-colors">Recent jobs</a>
+        <a href="#about" class="hover:text-white transition-colors">About me</a>
+        <a href="#contact" class="hover:text-white transition-colors">Get in touch</a>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-white/12 flex flex-col sm:flex-row sm:justify-between gap-2 text-[0.82rem] text-white/45">
+      <p>© <span id="year">2026</span> Chivers Roofing Ltd, Berkshire, Surrey, Hampshire &amp; London.</p>
+      <p>Registered in England &amp; Wales. Company no. 00000000.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/447760663711" target="_blank" rel="noopener"
+   class="fixed bottom-5 right-5 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-[0_6px_20px_-4px_rgba(0,0,0,.4)] transition-transform hover:scale-105 active:scale-100"
+   aria-label="Message Tommy on WhatsApp">
+  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.15 1.6 5.96L2 22l4.25-1.68a9.9 9.9 0 0 0 5.79 1.85c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-2.52 1 .96-2.46-.2-.32a8.1 8.1 0 0 1-1.26-4.38 8.19 8.19 0 0 1 14-5.8 8.15 8.15 0 0 1 2.4 5.8c0 4.53-3.68 8.19-8.6 8.19Zm4.5-6.13c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.13-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.4 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>
+</a>
+
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileNav = document.getElementById('mobileNav');
+  menuBtn.addEventListener('click', function () {
+    var open = mobileNav.classList.toggle('hidden') === false;
+    menuBtn.setAttribute('aria-expanded', String(open));
+  });
+  mobileNav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { mobileNav.classList.add('hidden'); menuBtn.setAttribute('aria-expanded', 'false'); }
+  });
+
+  var form = document.getElementById('quoteForm');
+  var note = document.getElementById('formNote');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    form.reset();
+    note.hidden = false;
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
