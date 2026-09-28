@@ -523,8 +523,13 @@
                 <option>Fascias, Soffits &amp; Guttering</option>
                 <option>Moss Removal &amp; Roof Maintenance</option>
                 <option>Not sure yet</option>
+                <option>Other</option>
               </select>
             </div>
+          </div>
+          <div class="mt-4" id="otherWrap" hidden>
+            <label for="otherSpecify">Please specify</label>
+            <input id="otherSpecify" name="otherSpecify" type="text" class="field" />
           </div>
           <div class="mt-4">
             <label for="message">Tell us a bit more <span class="font-normal text-charcoal/55">(optional)</span></label>
@@ -614,10 +619,23 @@
 
   var form = document.getElementById('quoteForm');
   var note = document.getElementById('formNote');
+  var needSelect = document.getElementById('need');
+  var otherWrap = document.getElementById('otherWrap');
+  var otherInput = document.getElementById('otherSpecify');
+  function syncOtherField() {
+    var isOther = needSelect.value === 'Other';
+    otherWrap.hidden = !isOther;
+    otherInput.required = isOther;
+    if (!isOther) { otherInput.value = ''; }
+  }
+  needSelect.addEventListener('change', syncOtherField);
+  syncOtherField();
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
     form.reset();
+    syncOtherField();
     note.hidden = false;
   });
 
