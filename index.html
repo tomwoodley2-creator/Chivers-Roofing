@@ -55,6 +55,7 @@
     transition: background-color .18s cubic-bezier(.2,.8,.2,1), color .18s cubic-bezier(.2,.8,.2,1), border-color .18s cubic-bezier(.2,.8,.2,1), transform .12s ease;
   }
   .btn:active { transform: translateY(1px) scale(.99); }
+  .btn:disabled { opacity: .6; cursor: wait; }
   .btn-primary { background: #EC1F27; border-color: #EC1F27; color: #fff; }
   .btn-primary:hover { background: rgba(236,31,39,.08); border-color: #EC1F27; color: #C8151C; }
   .btn-primary--hero:hover { background: rgba(255,255,255,.1); border-color: #fff; color: #fff; }
@@ -499,6 +500,10 @@
 
       <div class="mt-10 grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-start">
         <form id="quoteForm" novalidate class="bg-white border border-line rounded-[10px] p-6 md:p-7 shadow-[0_1px_2px_rgba(20,20,20,.04),0_16px_32px_-20px_rgba(20,20,20,.16)]">
+          <input type="hidden" name="access_key" value="c0ab5383-eadc-47eb-8b2a-97ebb8d9ace7" />
+          <input type="hidden" name="subject" value="New quote enquiry from chiversroofing.co.uk" />
+          <input type="hidden" name="from_name" value="Chivers Roofing website" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
           <div class="grid sm:grid-cols-2 gap-4 [&>div]:min-w-0">
             <div>
               <label for="name">Your name</label>
@@ -538,6 +543,9 @@
           <button type="submit" class="btn btn-primary mt-5">Send it over</button>
           <p id="formNote" class="mt-4 text-[0.92rem] font-semibold text-red-cta" hidden>
             Thanks, we've got that. We'll come back to you today, or first thing tomorrow.
+          </p>
+          <p id="formError" class="mt-4 text-[0.92rem] font-semibold text-red-cta" role="alert" hidden>
+            Sorry, that didn't send. Please call us on <a href="tel:+447760663711" class="underline">07760&nbsp;663711</a> or email <a href="mailto:Tommy@chiversroofing.co.uk" class="underline">Tommy@chiversroofing.co.uk</a>.
           </p>
         </form>
 
@@ -631,12 +639,32 @@
   needSelect.addEventListener('change', syncOtherField);
   syncOtherField();
 
+  var formError = document.getElementById('formError');
+  var submitBtn = form.querySelector('button[type="submit"]');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
-    form.reset();
-    syncOtherField();
-    note.hidden = false;
+    note.hidden = true;
+    formError.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (json) {
+        if (!json.success) { throw new Error(json.message); }
+        form.reset();
+        syncOtherField();
+        note.hidden = false;
+      })
+      .catch(function () { formError.hidden = false; })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send it over';
+      });
   });
 
   document.getElementById('year').textContent = new Date().getFullYear();
